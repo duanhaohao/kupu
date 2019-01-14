@@ -1,0 +1,179 @@
+<view class="choose-category marginB-20">
+  <view class='category font-30'>
+   <text class="work_property {{work_property==1 ? 'active  blue':'' }}" data-current="1" bindtap='tabNav'>点工</text>
+  </view>
+  <view class='category font-30'>
+    <text class="work_property {{work_property==2 ? 'active  blue':'' }}" data-current="2" bindtap='tabNav'>包工</text>
+  </view>
+</view>
+<!-- 点工 -->
+<block wx:if="{{work_property==1}}">
+  <form bindsubmit='formSubmit'>
+    <view class='point-work marginB-20 border-bottom-task'>
+      <view class='taskInfo'>
+        <view class='work-time border-right-task'>工作时间</view>
+        <view class='class-category'>
+          <radio-group bindchange="radioChange">
+            <view class='day-shift border-bottom-task flex'>
+              <text class='day-flex'>白班</text>
+              <label class='day-flex'>
+                <radio value='1,10'></radio>
+                <text>10小时</text>
+              </label>
+              <label class='day-flex'>
+                <radio value='1,8'></radio>
+                <text class='check-time'>8小时</text>
+              </label>
+            </view>
+            <view class='night-shift flex'>
+              <text class='day-flex'>夜班</text>
+              <label class='day-flex'>
+                <radio value='0,10'></radio>
+                <text>10小时</text>
+              </label>
+              <view class='day-flex'></view>
+            </view>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class='point-work border-bottom-task'>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>工作地址</view>
+        <view class='task-detail flex'>
+          <input name="work_address" placeholder='详细地址' placeholder-style='color:#CECCCD' bindtap='address' value='{{work_address}}'></input>
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>需要人数</view>
+        <view class='task-detail flex'>
+          <input name="worker_num" type="number" bindblur='workerNum' placeholder='输入人数' placeholder-style='color:#CECCCD' value='{{worker_num}}'></input>
+          人
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>区间价</view>
+        <view class='input-addon task-detail'>
+          <view class='padding'  data-type="-" bindtap="sum">
+            <view class='input-group-addon plus'></view>
+          </view>
+          <input name="interval_price" placeholder='0' bindblur='blur' placeholder-style='color:#CECCCD' type='number' value="{{interval_price!=0 ?interval_price: ''}}" class='text' ></input>
+          <view class='padding' data-type="+" bindtap="sum">
+            <view class='input-group-addon reduce'></view>
+          </view>
+          <text>元/天/人</text> 
+          </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>开工日期</view>
+        <view class='task-detail flex'>
+          <picker bindchange="bindDateChange"  mode="date" value='{{start_time}}'  start="{{start_time}}" end="2020-01-01">
+          <input name="start_time" value='{{start_time}}'></input>
+          </picker>
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>预计用工</view>
+        <view class='task-detail flex'>
+          <input type="number" bindblur='predictTime' name="predict_time" placeholder='输入天数' placeholder-style='color:#CECCCD' value='{{predict_time}}'></input>
+          天
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>施工内容</view>
+        <view class='task-detail flex'>
+          <input name="work_content" bindblur='workContent' placeholder='请输入施工内容' placeholder-style='color:#CECCCD' value='{{work_content}}'></input>
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>联系人</view>
+        <view class='task-detail flex'>
+          <input name="contact" bindblur='contact' placeholder='联系人姓名' placeholder-style='color:#CECCCD' value='{{contact}}'></input>
+        </view>
+      </view>
+      <view class='taskInfo border-bottom-task'>
+        <view class='work-time border-right-task'>联系电话</view>
+        <view class='task-detail flex'>
+          <input type="number" name="contact_tel" bindblur='contactTel' placeholder='联系人电话' placeholder-style='color:#CECCCD' value='{{contact_tel}}'></input>
+        </view>
+      </view>
+      <view class='taskInfo'>
+        <view class='work-time border-right-task'>我要留言</view>
+        <view class='task-detail flex'>
+          <input name="message" bindblur='message' placeholder='请填写您的需求,如是否带工具' placeholder-style='color:#CECCCD' value='{{message}}'></input>
+        </view>
+      </view>
+    </view>
+    <input name="lng" hidden='hidden' value='{{lng}}'></input>
+    <input name="lat" hidden='hidden' value='{{lat}}'></input>
+    <input name="area_code" hidden='hidden' value='{{area_code}}'></input>
+    <input name="is_day" hidden='hidden' value='{{is_day}}'></input>
+    <input name="work_property" hidden='hidden' value='{{work_property}}'></input>
+    <input name="work_time" hidden='hidden' value='{{work_time}}'></input>
+    <input name="work_type" hidden='hidden' value='{{work_type}}'></input>
+    <input name="work_name" hidden='hidden' value='{{work_name}}'></input>
+    <button class='point-submit font-30' form-type="submit" hover-class="none">提交</button>
+  </form>
+</block>
+<block wx:if="{{work_property==2}}">
+  <form bindsubmit='category'>
+    <view class='point-work border-bottom-task'>
+        <view class='taskInfo border-bottom-task'>
+          <view class='work-time border-right-task'>工作地址</view>
+          <view class='task-detail flex'>
+            <input name="work_address" placeholder='详细地址' placeholder-style='color:#CECCCD' bindtap='address' value='{{work_address}}'></input>
+          </view>
+        </view>
+        <view class='taskInfo border-bottom-task'>
+          <view class='work-time border-right-task'>开工日期</view>
+          <view class='task-detail flex'>
+            <picker bindchange="bindDateChange"  mode="date" value='{{start_time}}'  start="{{start_time}}" end="2020-01-01">
+            <input name="start_time" value='{{start_time}}'></input>
+            </picker>
+          </view>
+        </view>
+        <view class='taskInfo border-bottom-task'>
+          <view class='work-time border-right-task'>工程预算</view>
+          <view class='task-detail flex'>
+            <input type="number" bindblur='totalPrice' name="total_price" placeholder='价格' placeholder-style='color:#CECCCD' value='{{total_price}}'></input>
+            元
+          </view>
+        </view>
+        <view class='taskInfo border-bottom-task'>
+          <view class='work-time border-right-task'>联系人</view>
+          <view class='task-detail flex'>
+            <input name="contact" bindblur='contact' placeholder='负责人姓名' placeholder-style='color:#CECCCD' value='{{contact}}'></input>
+          </view>
+        </view>
+        <view class='taskInfo'>
+          <view class='work-time border-right-task'>联系电话</view>
+          <view class='task-detail flex'>
+            <input type="number" name="contact_tel" bindblur='contactTel' placeholder='负责人电话' placeholder-style='color:#CECCCD' value='{{contact_tel}}'></input>
+          </view>
+        </view>
+      </view>
+      <view class='point-work point-textaera'>
+        <view class='describe' >工地描述</view>
+        <textarea name='work_content' value='{{work_content}}' bindblur='workContent' placeholder="请输入工地描述(不少于20字)" placeholder-style="color:#CECCCD"></textarea>
+      </view>
+      <view class='work_pic'>
+        <view class='pic_text'>上传照片</view>
+        <view class='pic_item'>
+          <view class='pic_cell' wx:for="{{image_photo}}" wx:for-index="picIndex" wx:for-item="pic">
+            <image class='choose' mode="aspectFit" src='{{pic}}' data-index="{{index}}" bindtap="previewImg"></image>
+          </view>
+        </view>
+        <view class='upload_pic' bindtap='chooseimg'>
+            <image class='choose' mode="aspectFit"src="../../../image/personal_b.png"></image>
+        </view>
+      </view>
+      <input name="work_name" hidden='hidden' value='{{work_name}}'></input>
+      <input name="area_code" hidden='hidden' value='{{area_code}}'></input>
+      <input name="lng" hidden='hidden' value='{{lng}}'></input>
+      <input name="lat" hidden='hidden' value='{{lat}}'></input>
+      <input name="work_type" hidden='hidden' value='{{work_type}}'></input>
+      <input name="work_property" hidden='hidden' value='{{work_property}}'></input>
+      <input name="work_pic" hidden='hidden' value='{{image_photo}}'></input>
+      <button class='point-submit font-30' form-type="submit" hover-class="none">提交</button>
+  </form>
+</block>

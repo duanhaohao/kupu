@@ -1,0 +1,17 @@
+ <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+    <block wx:for="{{carousel}}" wx:key="index" wx:for-item="url">  
+      <swiper-item>  
+        <image src="{{url.ad_url}}" class="slide-image" mode="aspectFill"/>  
+      </swiper-item>  
+    </block>  
+</swiper>
+<view class='item'>
+<block wx:for="{{item}}" wx:key="index" wx:for-item="item">
+  <view class='item-list' id="{{item.work_id}}" data-name="{{item.work_name}}" bindtap='task'>
+    <view class='item-img'>
+      <image class='img' src='{{item.url}}'></image>
+    </view>
+    <view class='item-name font-28'>{{item.work_name}}</view>
+  </view>
+</block>
+</view>

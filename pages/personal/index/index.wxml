@@ -1,0 +1,103 @@
+<view class='personal'>
+  <view class='personal-top'>
+    <image class='personal-image' src='../../../image/banner-top.png'></image>
+  </view>
+  <view class='personal-head'>
+    <image mode='aspectFit' class='head-image' src='{{personal.wx_headimg}}'></image>
+  </view>
+  <view class='personal-name'>{{personal.wx_name}}</view>
+  <view class='personal-attestation'>
+    <block wx:if="{{personal.realname==''}}">
+      <text class='iconfont icon-renzhengshibai'></text>
+      <text class='unauthorized'>未认证</text>
+    </block>
+    <block wx:if="{{personal.realname}}">
+      <text class='iconfont icon-renzheng'></text>
+      <text class='unauthorized'>已认证</text>
+    </block>
+  </view>
+  <view class='industry'>
+    <text class="industry-text {{index==0 ? 'text1': '' }} {{index==1 ? 'text2': '' }}" wx:for="{{personal.work_industry}}">{{item}}</text>
+  </view>
+</view>
+<view class='personal-cell'>
+  <navigator url='/pages/personal/purse/purse'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon purse'>
+          <view class='iconfont icon-qianbao'></view>
+        </view>
+        <view class='item-text'>我的钱包</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+  <navigator url='/pages/personal/auth/auth'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon authentication-text'>
+        <view class='iconfont icon-renzheng1'></view>
+        </view>
+        <view class='item-text'>我的认证</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+  <navigator url='/pages/personal/recharge/recharge'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon recharge'>
+          <view class='iconfont icon-chongzhi'></view>
+        </view>
+        <view class='item-text'>手动充值</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+  <navigator url='/pages/personal/perfectData/perfectData'>
+    <view class='personal-item'>
+      <view class='item'>
+        <view class='item-icon'>
+          <view class='iconfont icon-wanshanziliao'></view>
+        </view>
+        <view class='item-text'>完善资料</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+</view>
+<view class='personal-cell'>
+  <navigator url='/pages/personal/share/share'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon share'>
+          <view class='iconfont icon-fenxiang'></view>
+        </view>
+        <view class='item-text'>分享</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+  <navigator url='/pages/personal/Guideuse/Guideuse'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon use'>
+          <view class='iconfont icon-ic_explode_px'></view>
+        </view>
+        <view class='item-text'>使用指南</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+  <navigator url='/pages/personal/aboutUs/aboutUs'>
+    <view class='personal-item border-bottom-task'>
+      <view class='item'>
+        <view class='item-icon about-us'>
+          <view class='iconfont icon-guanyuwomen'></view>
+        </view>
+        <view class='item-text'>关于我们</view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+  </navigator>
+</view>

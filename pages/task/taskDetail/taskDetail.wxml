@@ -1,0 +1,151 @@
+<!--pages/work/taskdetail/taskdetail.wxml-->
+<view class='content'>
+  <view class='detail-mid'>
+    <view class='mid-content'>
+      <view class='line-height-45 mid-left'>{{taskDetail.work_address}}</view>
+    </view>
+    <view class='mid-content'>
+      <view class='mid-left'>
+        <view class='line-height-50'>
+          <text class='title' decode='{{true}}'>订&nbsp;&nbsp;单&nbsp;&nbsp;号：</text>
+          <text class='yellow-content'>{{taskDetail.task_id}}</text>
+        </view>
+        <view class='line-height-50'>
+          <text class='title'>需求工种：</text>
+          <text class='.detail-work-type text-label'>{{taskDetail.work_type}}</text>
+          <text class='detail-work-desc text-label'>{{taskDetail.is_day?'白班':'夜班'}}{{taskDetail.work_time==0?'':taskDetail.work_time}}{{taskDetail.work_property==1?'小时制':''}}</text>
+        </view>
+        <view class='line-height-50'>
+          <block wx:if="{{taskDetail.work_property==1}}">
+            <text class='title'>需求人数：</text>
+            <text>{{taskDetail.worker_num}}人</text>
+            <text class='green-color' decode='{{true}}'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</text>
+          </block>
+          <text class='title'>抢单人数：</text>
+          <text>{{taskDetail.worker_num-taskDetail.need_num}}人</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='detail-bottom'>
+    <view class='line-height-50'>
+      <icon class='iconfont icon-jilu1 green-color'></icon>
+      <text> 订单信息</text>
+    </view>
+    <block wx:if="{{taskDetail.work_property==1}}">
+      <view class='line-height-50'>
+        <text class='title'>单日工资：</text>
+        <text>{{taskDetail.interval_price}}元</text>
+      </view>
+      <view class='line-height-50'>
+        <text class='title'>预计天数：</text>
+        <text>{{taskDetail.predict_time}}天</text>
+      </view>
+    </block>
+    <view class='line-height-50'>
+      <text class='title'>开工日期：</text>
+      <text>{{taskDetail.start_time}}</text>
+    </view>
+    <view class='line-height-50'>
+      <text class='title'>施工内容：</text>
+      <text>{{taskDetail.work_content}}</text>
+    </view>
+    <block wx:if="{{taskDetail.work_property==1}}">
+      <view class='line-height-50'>
+        <text class='title'>备注信息：</text>
+        <text>{{taskDetail.message}}</text>
+      </view>
+    </block>
+    <block wx:if="{{taskDetail.work_property==2}}">
+      <view class='pic_item'>
+        <view class='pic_cell' wx:for="{{taskDetail.pics}}" wx:for-index="index" wx:for-item="pic">
+          <image class='choose' mode="aspectFit" src='{{pic}}' data-index="{{index}}" bindtap="previewImg"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 投标师傅信息 -->
+  <block wx:if="{{taskDetail.task_status>0}}">
+    <view class='bid_master' wx:for="{{taskDetail.masterInfo}}" wx:key='index' wx:for-item="master">
+      <view class='master_info'>
+        <view class='master-headimg'>
+          <image src='{{master.wx_headimg}}' mode="aspectFill"></image>
+        </view>
+        <view class='master_cell'>
+          <view class='master'>{{master.realname}}</view>
+          <text class='master' decode='{{true}}'>抢单时间&nbsp;:&nbsp;{{master.bid_time}}</text>
+        </view>
+      </view>
+      <view class='master_btn'>
+        <block wx:if="{{master.bid_status==0}}">
+          <view class='bid_btn' bindtap='chooseMaster' data-status='2' data-bidid="{{master.bid_id}}">拒绝招用</view>
+          <view class='bid_btn green' bindtap='chooseMaster' data-status='1' data-bidid="{{master.bid_id}}">确认招用</view>
+        </block>
+        <block wx:if="{{master.bid_status==1}}">
+          <view class='bid_btn'>{{bidText}}</view>
+          <block wx:if="{{master.work_status==4}}">
+            <view class='bid_btn gary' bindtap='overWork' data-bidid="{{master.bid_id}}">确认完工</view>
+          </block>
+          <block wx:if="{{master.work_status==5}}">
+            <view class='bid_btn gary'>工作已完成</view>
+          </block>
+          <block wx:if="{{master.work_status==2}}">
+            <view class='bid_btn gary' bindtap='lookReason' data-reason='{{master.cancel_reason}}' data-bidid="{{master.bid_id}}">申请取消</view>
+          </block>
+          <block wx:if="{{master.work_status<5}}">
+            <view class='bid_btn green' bindtap='callPhone' data-phone='{{master.username}}'>一键拨号</view>
+          </block>
+        </block>
+        <block wx:if="{{master.bid_status==2}}">
+          <view class='bid_btn'>已被淘汰</view>
+        </block>
+        <block wx:if="{{master.bid_status==3}}">
+          <view class='bid_btn'>师傅弃标中</view>
+          <view class='bid_btn green'>同意弃标</view>
+        </block>
+        <block wx:if="{{master.bid_status==4}}">
+          <view class='bid_btn'>已弃标</view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <!-- 商户端发起申请 -->
+  <view class='cancel_bid'>
+    <view class='btn' wx:if="{{taskDetail.task_status!=4&&taskDetail.task_status!=0}}" bindtap='cancelBid'>申请取消</view>
+  </view>
+  <!-- 商户端发起申请 -->
+  <view class='space'></view>
+  <!-- 最底部操作按钮 -->
+  <block wx:if="{{taskDetail.task_status==2&&taskDetail.worker_num!=taskDetail.need_num}}">
+    <view class='operation' bindtap='toFull'>
+      <view class='op-btn font-gray'>一键招满</view>
+    </view>
+  </block>
+  <block wx:if="{{taskDetail.task_status==5}}">
+    <view class='operation'>
+      <view class='op-btn font-gray'>任务已完成</view>
+    </view>
+  </block>
+  <block wx:if="{{taskDetail.task_status==4}}">
+    <view class='operation'>
+      <view class='op-btn font-gray'>任务取消中,待师傅同意</view>
+    </view>
+  </block>
+  <!-- 取消原因 -->
+  <view class='cancel-position'>
+    <view class="cancel-box {{isCancel?'box-shadow':''}}" animation="{{animationData}}">
+      <view class='cancel-content'>
+        <view class='cancel-title'>申请取消</view>
+        <view class='notice'>申请取消后，将信息发送给师傅,师傅同意后,才能取消</view>
+        <view class='reason'>
+          <textarea class='textarea' placeholder="请输入100字以内" maxlength='50' bindblur='getReason' />
+        </view>
+      </view>
+      <view class='height-20'></view>
+      <view class='btn-box'>
+        <view class='btn-default' bindtap='cancelApply'>取　消</view>
+        <view class='btn-default btn-confirm' bindtap='confirmApply'>确　定</view>
+      </view>
+    </view>
+  </view>
+</view>

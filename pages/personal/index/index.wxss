@@ -1,0 +1,106 @@
+/* pages/personal/index/index.wxss */
+.personal{
+  background: #fff;
+  font-size: 24rpx;
+}
+.personal-image{
+  width: 100%;
+  background-size: cover;
+  height: 270rpx
+}
+.personal-head{
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -160rpx
+}
+.head-image{
+  width: 100%;
+  height: 100%;
+}
+.personal-name{
+  width: 100%;
+  text-align: center;
+  padding: 10rpx 0;
+  font-size: 28rpx;
+}
+.personal-attestation{
+  margin: 0 auto;
+  width: 150rpx;
+  border: 1rxp solid #ccc;
+  color: #666;
+  background-color: #F5F5F5;
+  border-radius: 100rpx;
+  display: flex;
+  padding: 5rpx 20rpx;
+}
+.unauthorized{
+  padding-left: 10rpx;
+  line-height: 40rpx;
+}
+.industry{
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  padding: 30rpx 0 20rpx;
+}
+.industry-text{
+  text-align: center;
+  padding: 0 20rpx;
+}
+.text1{
+  border: 1px solid #1A9DF8;
+  color:  #1A9DF8;
+  margin-right: 20rpx;
+}
+.text2{
+  border: 1px solid #FF9003;
+  color:  #FF9003;
+}
+.personal-cell{
+  background: #fff;
+  margin-top: 30rpx;
+  padding:0 20rpx;
+}
+.personal-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0 ;
+  font-size: 30rpx
+}
+.icon-jiantou{
+  font-size: 30rpx;
+  transform: rotate(-90deg);
+}
+.item{
+  display: flex;
+  align-items: center;
+}
+.item-text{
+  padding-left: 20rpx;
+}
+.item-icon{
+  background: #FFA743;
+  padding: 5rpx;
+}
+.recharge{
+  background:#A743FE
+}
+.authentication-text{
+  background:  #FFA743;
+}
+.purse{
+  background: #FF4242
+}
+.share{
+  background: #A743FE;
+}
+.use{
+  background: #4F75E2;
+}
+.about-us{
+  background: #57BF42
+}

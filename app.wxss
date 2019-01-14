@@ -1,0 +1,98 @@
+@font-face {
+font-family: 'iconfont'; /* project id 364463 */
+src: url('//at.alicdn.com/t/font_364463_n6yavcue3a.eot');
+src: url('//at.alicdn.com/t/font_364463_n6yavcue3a.eot?#iefix') format('embedded-opentype'),
+url('//at.alicdn.com/t/font_364463_n6yavcue3a.woff') format('woff'),
+url('//at.alicdn.com/t/font_364463_n6yavcue3a.ttf') format('truetype'),
+url('//at.alicdn.com/t/font_364463_n6yavcue3a.svg#iconfont') format('svg');
+}
+.icon-jiantou::before{
+  content:"\e60f";
+  font-size: 30rpx;
+}
+.icon-renzhengshibai::before{
+  color: #CCCCCC;
+  font-size: 36rpx;
+  content:"\e7a6"
+}
+.icon-renzheng::before{
+  color: #CCCCCC;
+  font-size: 36rpx;
+  content:"\e634"
+}
+.icon-qianbao::before{
+  content: "\e60e";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-renzheng1::before{
+  content: "\e60d";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-chongzhi::before{
+  content: "\e622";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-wanshanziliao::before{
+  content: "\e60a";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-fenxiang::before{
+  content: "\e648";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-ic_explode_px::before{
+  content: "\e654";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-guanyuwomen::before{
+  content: "\e62a";
+  font-size: 30rpx;
+  color: #fff
+}
+.icon-xing::before{content:"\e70e"}
+.icon-jilu1::before{content:"\e671"}
+.icon-dianhua::before{content:"\e61b"}
+.icon-qiangdan::before{content:"\e643"}
+.icon-shigong::before{content:"\e650"}
+.icon-jungong::before{content:"\e7e8"}
+.icon-quxiao::before{content:"\e728"}
+.icon-yiquxiao::before{content:"\e621"}
+.icon-tubiaozhizuomoban::before{content:"\e629"}
+page{
+  background-color: #efefef;
+  font-size: 30rpx;
+}
+/*字体大小*/
+.font-28{
+  font-size: 28rpx;
+}
+.font-30{
+  font-size: 30rpx;
+}
+/*margin*/
+.marginB-20{
+  margin-bottom: 20rpx;
+}
+.border-right-task{
+  border-right: 1rpx solid #E0E0E0
+}
+.border-bottom-task{
+  border-bottom: 1rpx solid #E0E0E0
+}
+.flex{
+  display: flex;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 24rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

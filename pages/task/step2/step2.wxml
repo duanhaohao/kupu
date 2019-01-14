@@ -1,0 +1,70 @@
+<!--pages/task/step2/step2.wxml-->
+<view class='orderInfo'>
+  <view class='order-cell flex'>
+    <view class='order-text'>工　　种:</view>
+    <view class=' text-category'>{{taskInfo.work_name}}</view>
+  </view>
+  <block wx:if="{{taskInfo.work_property==1}}">
+  <view class='order-cell flex'>
+    <view class='order-text'>工作时间:</view>
+    <view class='text-category text-27D693'>
+      <text>{{taskInfo.is_day==1?'白班':'夜班'}}</text>
+      <text>{{taskInfo.work_time}}小时制</text>
+    </view>
+  </view>
+  </block> 
+  <view class='order-cell flex'>
+    <view class='order-text'>工作地址:</view>
+    <view class='order-info text-333333'>{{taskInfo.work_address}}{{taskInfo.name}}</view>
+  </view>
+  <view class='order-cell flex'>
+    <view class='order-text'>施工内容:</view>
+    <view class='order-info'>{{taskInfo.work_content}}</view>
+  </view>
+  <block wx:if="{{taskInfo.work_property==1}}">
+  <view class='order-cell flex'>
+    <view class='order-text'>需求人数:</view>
+    <view class='order-info'>{{taskInfo.worker_num}}</view>
+  </view>
+  </block>
+  <view class='order-cell flex'>
+    <view class='order-text'>开工日期:</view>
+    <view class='order-info'>{{taskInfo.start_time}}</view>
+  </view>
+  <block wx:if="{{taskInfo.work_property==1}}">
+  <view class='order-cell flex'>
+    <view class='order-text'>预计天数:</view>
+    <view class='order-info'>{{taskInfo.predict_time}}</view>
+  </view>
+  </block>
+  <view class='order-cell flex'>
+    <view class='order-text '>总　　价:</view>
+    <view class='order-info text-FF8A00'>
+      <block wx:if="{{taskInfo.work_property==2}}">
+      {{taskInfo.total_price}}
+      </block>
+      <block  wx:if="{{taskInfo.work_property==1}}">
+      {{taskInfo.interval_price*taskInfo.predict_time*taskInfo.worker_num}}元
+      </block>
+    </view>
+  </view>
+  <view class='order-cell flex'>
+    <view class='order-text'>联系人:</view>
+    <view class='order-info'>{{taskInfo.contact}}</view>
+  </view>
+  <view class='order-cell flex'>
+    <view class='order-text'>联系电话:</view>
+    <view class='order-info'>{{taskInfo.contact_tel}}</view>
+  </view>
+  <block wx:if="{{taskInfo.work_property==1}}">
+  <view class='order-cell flex'>
+    <view class='order-text'>留　　言:</view>
+    <view class='order-info'>{{taskInfo.message}}</view>
+  </view>
+  </block>
+  <view class='order-cell flex'>
+    <view class='order-text'>保证金:</view>
+    <view class='order-info'>瓦工</view>
+  </view>
+</view>
+<button bindtap='refer' class='refer'  disabled="{{disable}}">确认</button>

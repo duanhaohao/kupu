@@ -1,0 +1,49 @@
+/* pages/task/step2/step2.wxss */
+page{
+  background-color: #FFF;
+  font-size: 30rpx;
+  color: #666666;
+}
+.orderInfo{
+  padding: 40rpx;
+}
+.text-category{
+  margin-left: 20rpx;
+  border-radius: 8rpx;
+  border: 1rpx solid #1a9df8;
+  color: #1a9df8;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 0 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.order-cell{
+  padding: 20rpx 0;
+  flex-wrap: wrap;
+}
+.order-text{
+  width: 170rpx;
+}
+.order-info{
+  margin-left: 20rpx;
+  flex: 1;
+  color: #333333;
+}
+.text-FF8A00{
+  color: #FF8A00;
+}
+.text-27D693{
+  color: #27D693;
+  background: #E1F8F0;
+  border: 1rpx solid  #E1F8F0;
+}
+.refer{
+  background-color: #27D693;
+  font-size:36rpx;
+  text-align: center;
+  padding: 30rpx;
+  bottom: 0;
+  border-radius: 0;
+  line-height:50rpx;
+}

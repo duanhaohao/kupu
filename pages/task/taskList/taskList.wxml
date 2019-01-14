@@ -1,0 +1,69 @@
+<!--pages/task/taskList/taskList.wxml-->
+<view class='content'>
+  <loading hidden="{{loadingHidden}}">
+    加载中...
+  </loading>
+  <view class='nav'>
+    <scroll-view scroll-x="true" scroll-left='{{scrollLeft}}' style=" white-space: nowrap;" >
+      <view class="nav-list {{navChecked[0]==1?'nav-check':'nav-normal'}}" bindtap='getList' data-status='{{1}}'>
+        <icon class='iconfont icon-qiangdan'></icon>
+        <view class='nav-title'>未付款</view>
+      </view>
+      <view class="nav-list {{navChecked[1]==1?'nav-check':'nav-normal'}}" bindtap='getList' data-status='{{2}}'>
+        <icon class='iconfont icon-qiangdan'></icon>
+        <view class='nav-title'>投标中</view>
+      </view>
+      <view class="nav-list {{navChecked[2]==1?'nav-check':'nav-normal'}}" bindtap='getList' data-status='{{3}}'>
+        <icon class='iconfont icon-shigong'></icon>
+        <view class='nav-title'>施工中</view>
+      </view>
+      <view class="nav-list {{navChecked[3]==1?'nav-check':'nav-normal'}}" bindtap='getList' data-status='{{4}}'>
+        <icon class='iconfont icon-jungong'></icon>
+        <view class='nav-title'>已竣工</view>
+      </view>
+      <view class="nav-list {{navChecked[4]==1?'nav-check':'nav-normal'}}" bindtap='getList' data-status='{{5}}'>
+        <icon class='iconfont icon-yiquxiao'></icon>
+        <view class='nav-title'>取消中</view>
+      </view>
+      <view class="nav-list {{navChecked[5]==1?'nav-check':'nav-normal'}} last-nav-list" bindtap='getList' data-status='{{6}}'>
+        <icon class='iconfont icon-quxiao'></icon>
+        <view class='nav-title'>已取消</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='list-box' duration="300" bindchange="switchTab">
+    <block wx:if='{{orderlList.length>0}}'>
+      <view class='padding-top-130'>
+        <view class='list-content' wx:for="{{orderlList}}" bindtap='taskDetail' data-taskid="{{item.task_id}}">
+          <view class='line-height-45'>{{item.work_address}}</view>
+          <view class='line-height-50'>
+            <text class='title' decode='{{true}}'>订&nbsp;&nbsp;单&nbsp;&nbsp;号：</text>
+            <text class='yellow-content'>{{item.task_id}}</text>
+          </view>
+          <view class='bottom-border'>
+            <text class='title'>需求工种：</text>
+            <text class='.detail-work-type text-label'>{{item.workType}}</text>
+            <text class='detail-work-desc text-label'>{{item.is_day?'白班':'夜班'}}{{item.work_time==0?'':item.work_time}}{{item.work_property==1?'小时制':''}}</text>
+          </view>
+          <view class='line-height-50 top-border'>
+            <text class='title'>开工日期：</text>
+            <text>{{item.start_time}}</text>
+          </view>
+          <view class='line-height-50'>
+            <block>
+              <text class='title'>需求人数：</text>
+              <text>{{item.worker_num}}人</text>
+              <text class='green-color' decode='{{true}}'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</text>
+            </block>
+            <text class='title'>抢单人数：</text>
+            <text>{{item.worker_num-item.need_num}}人</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{start==1 && orderlList==''}}">
+      <view class='empty-pic'></view>
+      <view class='list-notice'>没有该类型的订单</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,3 @@
+<!--pages/selectIdentity/selectIdentity.wxml-->
+<button open-type='getUserInfo' bindgetuserinfo="getUserInfo" data-id='0'>商户</button>
+<button style='margin-top:200rpx' open-type='getUserInfo' data-id='1'  bindgetuserinfo="getUserInfo">师傅</button>

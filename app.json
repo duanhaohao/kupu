@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/selectIdentity/selectIdentity",
+    "pages/personal/index/index",
+    "pages/personal/purse/purse",
+    "pages/personal/auth/auth",
+    "pages/personal/recharge/recharge",
+    "pages/personal/perfectData/perfectData",
+    "pages/personal/share/share",
+    "pages/personal/Guideuse/Guideuse",
+    "pages/personal/aboutUs/aboutUs",
+    "pages/index/index",
+    "pages/task/step1/step1",
+    "pages/task/step2/step2",
+    "pages/task/step3/step3",
+    "pages/task/step4/step4",
+    "pages/task/taskDetail/taskDetail",
+    "pages/task/taskList/taskList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#27D693",
+    "navigationBarTitleText": "天宫驿站",
+    "navigationBarTextStyle": "#FFF"
+  },
+  "tabBar": {
+    "color": "#9a9a9a",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home_s.png",
+        "selectedIconPath": "image/home_b.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/task/taskList/taskList",
+        "iconPath": "image/order_s.png",
+        "selectedIconPath": "image/order_b.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/personal/index/index",
+        "iconPath": "image/personal_s.png",
+        "selectedIconPath": "image/personal_b.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}
